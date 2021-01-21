@@ -217,7 +217,7 @@ const DaysList = ({
       >
         {!isStandard ? '' : getLanguageDigits(day)}
         <br></br>
-        {onRenderDayCell(dayItem)}
+        {onRenderDayCell(dayItem)?.basePrice}
       </div>
     );
   };

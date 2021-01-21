@@ -124,7 +124,9 @@ class App extends React.Component {
       });
 
       if (dayCost) {
-        return dayCost.basePrice.toString();
+        return {
+          basePrice: dayCost.basePrice.toString(),
+        };
       }
       return '';
     }
