@@ -16,6 +16,7 @@ const DaysList = ({
   value,
   monthChangeDirection,
   onSlideChange,
+  onRenderDayCell,
   disabledDays,
   onDisabledDayError,
   minimumDate,
@@ -215,6 +216,8 @@ const DaysList = ({
         data-is-default-selectable={shouldEnableKeyboardNavigation}
       >
         {!isStandard ? '' : getLanguageDigits(day)}
+        <br></br>
+        {onRenderDayCell(dayItem)}
       </div>
     );
   };
@@ -278,6 +281,7 @@ const DaysList = ({
 
 DaysList.defaultProps = {
   onChange: () => {},
+  onRenderDayCell: () => {},
   onDisabledDayError: () => {},
   disabledDays: [],
   calendarTodayClassName: '',

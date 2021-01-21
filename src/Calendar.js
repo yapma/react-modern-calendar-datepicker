@@ -9,6 +9,8 @@ import { Header, MonthSelector, YearSelector, DaysList } from './components';
 const Calendar = ({
   value,
   onChange,
+  onRenderDayCell,
+  onChangeDate,
   onDisabledDayError,
   calendarClassName,
   calendarTodayClassName,
@@ -52,7 +54,7 @@ const Calendar = ({
   const { weekDays: weekDaysList, isRtl } = useLocaleLanguage(locale);
   const today = getToday();
 
-  const createStateToggler = property => () => {
+  const createStateToggler = (property) => () => {
     setMainState({ ...mainState, [property]: !mainState[property] });
   };
 
@@ -71,13 +73,15 @@ const Calendar = ({
     ? shallowClone(mainState.activeDate)
     : getComputedActiveDate();
 
-  const weekdays = weekDaysList.map(weekDay => (
+  onChangeDate(activeDate);
+
+  const weekdays = weekDaysList.map((weekDay) => (
     <abbr key={weekDay.name} title={weekDay.name} className="Calendar__weekDay">
       {weekDay.short}
     </abbr>
   ));
 
-  const handleMonthChange = direction => {
+  const handleMonthChange = (direction) => {
     setMainState({
       ...mainState,
       monthChangeDirection: direction,
@@ -85,14 +89,18 @@ const Calendar = ({
   };
 
   const updateDate = () => {
-    setMainState({
-      ...mainState,
-      activeDate: getDateAccordingToMonth(activeDate, mainState.monthChangeDirection),
-      monthChangeDirection: '',
+    setMainState(mainState => {
+      let newResult = {
+        ...mainState,
+        activeDate: getDateAccordingToMonth(activeDate, mainState.monthChangeDirection),
+        monthChangeDirection: '',
+      };
+      onChangeDate(newResult.activeDate);
+      return newResult;
     });
   };
 
-  const selectMonth = newMonthNumber => {
+  const selectMonth = (newMonthNumber) => {
     setMainState({
       ...mainState,
       activeDate: { ...activeDate, month: newMonthNumber },
@@ -100,7 +108,7 @@ const Calendar = ({
     });
   };
 
-  const selectYear = year => {
+  const selectYear = (year) => {
     setMainState({
       ...mainState,
       activeDate: { ...activeDate, year },
@@ -164,6 +172,7 @@ const Calendar = ({
         minimumDate={minimumDate}
         maximumDate={maximumDate}
         onChange={onChange}
+        onRenderDayCell={onRenderDayCell}
         calendarTodayClassName={calendarTodayClassName}
         calendarSelectedDayClassName={calendarSelectedDayClassName}
         calendarRangeStartClassName={calendarRangeStartClassName}
