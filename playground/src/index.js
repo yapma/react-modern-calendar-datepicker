@@ -177,8 +177,8 @@ class App extends React.Component {
         onChange={this.setSelectedDay}
         shouldHighlightWeekends
         locale="fa"
-        onRenderDayCell={this.onRenderDayCell}
-        onChangeDate={this.onChangeDate}
+        // onRenderDayCell={this.onRenderDayCell}
+        // onChangeDate={this.onChangeDate}
       />
     );
   }

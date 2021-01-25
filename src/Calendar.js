@@ -199,6 +199,8 @@ Calendar.defaultProps = {
   value: null,
   renderFooter: () => null,
   customDaysClassName: [],
+  onRenderDayCell: (day) => {},
+  onChangeDate: (date)=>{}
 };
 
 export { Calendar };

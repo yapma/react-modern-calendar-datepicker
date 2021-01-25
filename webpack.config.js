@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const pkg = require('./package.json');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: path.join(__dirname, 'playground/src/index.html'),
@@ -8,6 +9,12 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: path.join(__dirname, 'playground/src/index.js'),
+  output: {
+    path: path.resolve(__dirname, 'lib'),
+    filename: "index.js",
+    library: pkg.name,
+    libraryTarget: "commonjs2"
+  },
   module: {
     rules: [
       {
