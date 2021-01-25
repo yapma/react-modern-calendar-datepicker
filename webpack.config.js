@@ -9,12 +9,12 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: path.join(__dirname, 'playground/src/index.js'),
-  output: {
-    path: path.resolve(__dirname, 'lib'),
-    filename: "index.js",
-    library: pkg.name,
-    libraryTarget: "commonjs2"
-  },
+  // output: {
+  //   path: path.resolve(__dirname, 'lib'),
+  //   filename: "index.js",
+  //   library: pkg.name,
+  //   libraryTarget: "commonjs2"
+  // },
   module: {
     rules: [
       {
