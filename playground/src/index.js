@@ -125,7 +125,9 @@ class App extends React.Component {
 
       if (dayCost) {
         return {
-          basePrice: dayCost.basePrice.toString(),
+          basePrice: dayCost.basePrice,
+          offPrice: dayCost.offPrice,
+          off: dayCost.off,
         };
       }
       return '';
@@ -154,7 +156,7 @@ class App extends React.Component {
     ) {
       this.setState({ lastCalendarDate: date });
       fetch(
-        'http://localhost:4106/api/Notification/ShowingPrice?TourismServiceID=19635&start=' +
+        'http://localhost:4106/api/Notification/ShowingPrice?TourismServiceID=25870&start=' +
           startDateShamsi +
           '&end=' +
           endDateShamsi,
@@ -177,8 +179,8 @@ class App extends React.Component {
         onChange={this.setSelectedDay}
         shouldHighlightWeekends
         locale="fa"
-        // onRenderDayCell={this.onRenderDayCell}
-        // onChangeDate={this.onChangeDate}
+        onRenderDayCell={this.onRenderDayCell}
+        onChangeDate={this.onChangeDate}
       />
     );
   }

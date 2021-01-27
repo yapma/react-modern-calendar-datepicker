@@ -196,6 +196,9 @@ const DaysList = ({
       isOnActiveSlide,
       isStandard,
     });
+
+    const dayInfo = onRenderDayCell(dayItem);
+
     return (
       <div
         tabIndex={shouldEnableKeyboardNavigation ? '0' : '-1'}
@@ -217,7 +220,9 @@ const DaysList = ({
       >
         {!isStandard ? '' : getLanguageDigits(day)}
         <br></br>
-        {onRenderDayCell(dayItem)?.basePrice}
+        {dayInfo && dayInfo.basePrice? dayInfo.basePrice.toString() : null}
+        <br></br>
+        {dayInfo && dayInfo.off != 0 ? dayInfo.offPrice.toString() : null}
       </div>
     );
   };
