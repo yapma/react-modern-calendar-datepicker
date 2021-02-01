@@ -34,6 +34,8 @@ const DatePicker = ({
   shouldHighlightWeekends,
   renderFooter,
   customDaysClassName,
+  datePickerIsOpen,
+  handleDatePickerIsOpen,
 }) => {
   const calendarContainerElement = useRef(null);
   const inputElement = useRef(null);
@@ -60,6 +62,7 @@ const DatePicker = ({
   }, [value, isCalendarOpen]);
 
   const handleBlur = e => {
+    handleDatePickerIsOpen();
     e.persist();
     if (!isCalendarOpen) return;
     const isInnerElementFocused = calendarContainerElement.current.contains(e.relatedTarget);
@@ -133,6 +136,13 @@ const DatePicker = ({
       shouldPreventToggle.current = false;
     }
   }, [shouldPreventToggle, isCalendarOpen]);
+
+  useEffect(() => {
+    if (datePickerIsOpen == true) {
+      inputElement.current.focus();
+      openCalendar();
+    }
+  });
 
   return (
     <div
