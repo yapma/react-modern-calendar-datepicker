@@ -8,6 +8,7 @@ import { TYPE_SINGLE_DATE, TYPE_MUTLI_DATE, TYPE_RANGE } from './shared/constant
 const DatePicker = ({
   value,
   onChange,
+  onChangeDate,
   formatInputText,
   inputPlaceholder,
   inputClassName,
@@ -195,6 +196,7 @@ const DatePicker = ({
               shouldHighlightWeekends={shouldHighlightWeekends}
               renderFooter={renderFooter}
               customDaysClassName={customDaysClassName}
+              onChangeDate={onChangeDate}
             />
           </div>
           <div className="DatePicker__calendarArrow" />
@@ -208,6 +210,9 @@ DatePicker.defaultProps = {
   wrapperClassName: '',
   locale: 'en',
   calendarPopperPosition: 'auto',
+  onChangeDate: (date)=>{},
+  datePickerIsOpen: false,
+  handleDatePickerIsOpen: ()=>{}
 };
 
 export default DatePicker;

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import '../../src/DatePicker.css';
-import { Calendar } from '../../src';
+import DatePicker, { Calendar } from '../../src';
 import * as serviceWorker from './serviceWorker';
 import moment from 'moment-jalaali';
 
@@ -116,10 +116,9 @@ class App extends React.Component {
 
     if (this.state.costsList) {
       let dayCost = this.state.costsList.find(x => {
-        let dateParts = x?.date.split('/');
-        let xYear = +dateParts[0];
-        let xMonth = +dateParts[1];
-        let xDay = +dateParts[2];
+        let xYear = +x.year;
+        let xMonth =  +x.month;
+        let xDay =  +x.day;
         return day.year == xYear && day.month == xMonth && day.day == xDay;
       });
 
@@ -174,7 +173,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Calendar
+      <DatePicker
         value={this.state.selectedDay}
         onChange={this.setSelectedDay}
         shouldHighlightWeekends
