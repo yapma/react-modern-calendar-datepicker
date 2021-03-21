@@ -1,6 +1,6 @@
 {
   "name": "ibom-react-calendar",
-  "version": "0.1.9",
+  "version": "0.1.91",
   "description": "A modern, beautiful, customizable date picker for React",
   "main": "lib/index.js",
   "types": "index.d.ts",

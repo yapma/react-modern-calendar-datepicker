@@ -218,10 +218,13 @@ const DaysList = ({
         role="gridcell"
         data-is-default-selectable={shouldEnableKeyboardNavigation}
       >
+        <span className="Day">
         {!isStandard ? '' : getLanguageDigits(day)}
-        <br></br>
+        </span>
+        <span className="Price">
         {dayInfo && dayInfo.basePrice? dayInfo.basePrice.toString() : null}
-        <br></br>
+        </span>
+        <span className="OffPrice"></span>
         {dayInfo && dayInfo.off != 0 ? dayInfo.offPrice.toString() : null}
       </div>
     );
