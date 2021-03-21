@@ -224,8 +224,9 @@ const DaysList = ({
         <span className="Price">
         {dayInfo && dayInfo.basePrice? dayInfo.basePrice.toString() : null}
         </span>
-        <span className="OffPrice"></span>
+        <span className="OffPrice">
         {dayInfo && dayInfo.off != 0 ? dayInfo.offPrice.toString() : null}
+        </span>
       </div>
     );
   };
