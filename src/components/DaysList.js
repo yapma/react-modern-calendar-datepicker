@@ -219,13 +219,13 @@ const DaysList = ({
         data-is-default-selectable={shouldEnableKeyboardNavigation}
       >
         <span className="Day">
-        {!isStandard ? '' : getLanguageDigits(day)}
+          {!isStandard ? '' : getLanguageDigits(day)}
         </span>
         <span className="Price">
-        {dayInfo && dayInfo.basePrice? dayInfo.basePrice.toString() : null}
+          {dayInfo && dayInfo.basePrice? dayInfo.basePrice.toString() : null}
         </span>
         <span className="OffPrice">
-        {dayInfo && dayInfo.off != 0 ? dayInfo.offPrice.toString() : null}
+          {dayInfo && dayInfo.off != 0 ? dayInfo.offPrice.toString() : null}
         </span>
       </div>
     );
