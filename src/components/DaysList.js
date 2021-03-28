@@ -222,10 +222,14 @@ const DaysList = ({
           {!isStandard ? '' : getLanguageDigits(day)}
         </span>
         <span className="Price">
-          {dayInfo && dayInfo.basePrice? dayInfo.basePrice.toString() : null}
-        </span>
-        <span className="OffPrice">
-          {dayInfo && dayInfo.off != 0 ? dayInfo.offPrice.toString() : null}
+          {dayInfo && dayInfo.basePrice && dayInfo.off == 0 
+            ? dayInfo.basePrice.toString().replace(/./g, function(c, i, a) {
+              return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c; }) 
+            : null}
+          {dayInfo && dayInfo.offPrice && dayInfo.off != 0 
+            ? dayInfo.offPrice.toString().replace(/./g, function(c, i, a) {
+              return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c; }) 
+            : null}
         </span>
       </div>
     );
